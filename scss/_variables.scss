@@ -1,0 +1,47 @@
+//  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+//  Variables
+//  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+// Colors
+$color-white: #fff;
+$color-black: #000;
+$color-grid: lighten( $color-black, 90% );
+$color-active: #e0f8e4;
+
+// Fonts
+$font-weight-thin: 100;
+$font-weight-light: 200;
+$font-weight-book: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+$font-weight-black: 900;
+
+$font-family-primary: 'Montserrat', sans-serif;
+$font-family-secondary: 'Roboto', sans-serif;
+
+// z-index
+$z-header: 10000;
+$z-menu-button: 9500;
+$z-curtain: 9000;
+
+// Misc
+$transition: .3s;
+$default-padding: 1rem;
+$double-padding: $default-padding * 2;
+$half-padding: $default-padding / 2;
+$double-padding: 2 * $default-padding;
+$grid-overlay-large: radial-gradient( circle, transparent, transparent 57%, $color-grid 65% ) left top/20px 20px;
+$grid-overlay-small: radial-gradient( circle, transparent, transparent 50%, $color-white 70% ) left top/5px 5px;
+
+// SVG
+$icon-x: '
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+    <g fill="none" stroke="#000000" stroke-width="10">
+      <path d="M3 3L47 47"/>
+      <path d="M3 47L47 3"/>
+    </g>
+  </svg>
+';

@@ -1,0 +1,32 @@
+@mixin breakpoint($point) {
+  // Landscape phones and down
+  @if $point == small {
+    @media only screen and (min-width: 481px) { @content; }
+  } @else if $point == medium {
+    // Landscape phone to portrait tablet
+    @media only screen and (min-width: 768px) { @content; }
+  } @else if $point == large {
+    // Portrait tablet to landscape and desktop
+    @media only screen and (min-width: 960px) { @content; }
+  } @else if $point == xlarge {
+    // Large desktop
+    @media only screen and (min-width: 1048px) { @content; }
+  } @else if $point == xxlarge {
+    // Large desktop
+    @media only screen and (min-width: 1200px) { @content; }
+  } @else if $point == iphone {
+    // iPhone
+    @media (device-height: 568px) and (-webkit-min-device-pixel-ratio: 2) { @content; }
+  } @else if $point == retina {
+    // Retina
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+         only screen and (min--moz-device-pixel-ratio: 1.5),
+         only screen and (min-device-pixel-ratio: 1.5) {
+      // import styles in 2x.scss
+      // @import "2x";
+      @content; }
+  } @else if $point == print {
+    // Print
+    @media print { @content; }
+  }
+}

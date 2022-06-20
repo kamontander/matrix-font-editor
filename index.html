@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Matrix Font Editor</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="editor-container">
+      <canvas id="editor-canvas"></canvas>
+    </div>
+    <div class="button-area">
+      <button id="add-glyph">Add glyph</button>
+      <input type="file" id="file-upload" style="display:none" accept=".json" />
+      <button id="load-file">Load font file (JSON)</button>
+      <button id="save-file">Save font file (JSON)</button>
+      <button id="copy-font">Copy font file (JSON) to clipboard</button>
+      <button id="save-local">Save font to localStorage</button>
+    </div>
+    <textarea id="glyph-data" cols="50" rows="5"></textarea>
+    <div id="test-container">
+      <canvas id="test-canvas" height="8" width="512"></canvas>
+      <input type="text" id="test-input" value="The quick brown fox jumps over the lazy dog">
+    </div>
+    <ul id="glyphs">
+
+    </ul>
+    <script src="js/startingFont.js"></script>
+    <script src="js/scripts.js"></script>
+  </body>

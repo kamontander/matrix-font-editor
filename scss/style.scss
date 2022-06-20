@@ -1,0 +1,228 @@
+@import "normalize";
+@import "breakpoints";
+@import "mixins";
+@import "functions";
+@import "variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: $default-padding;
+  font-family: 'Roboto', sans-serif;
+  font-weight: $font-weight-book;
+}
+
+strong {
+  font-weight: $font-weight-medium;
+}
+
+canvas {
+  image-rendering: optimizeSpeed;             // Older versions of FF
+  image-rendering: -moz-crisp-edges;          // FF 6.0+
+  image-rendering: -webkit-optimize-contrast; // Safari
+  image-rendering: -o-crisp-edges;            // OS X & Windows Opera (12.02+)
+  image-rendering: pixelated;                 // Awesome future-browsers
+  -ms-interpolation-mode: nearest-neighbor;   // IE
+}
+
+#output {
+  font-family: 'Courier New', Courier, monospace !important;
+  padding: 1em;
+}
+
+#editor-container {
+  @include pseudo( after );
+  float: left;
+  border: 2px solid $color-grid;
+  box-sizing: content-box;
+
+  width: calc( 32px * 20 );
+  height: calc( 8px * 20 );
+
+  &::after {
+    pointer-events: none;
+    background: $grid-overlay-large;
+  }
+}
+
+#editor-canvas {
+  display: block;
+  transform-origin: top left;
+  transform: scale( 20 );
+  cursor: crosshair;
+}
+
+#glyphs {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    margin: 5px;
+    flex-grow: 1;
+    flex-basis: 40%;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid $color-grid;
+    position: relative;
+
+    @include breakpoint( medium ) {
+      flex-basis: 20%;
+    }
+
+    @include breakpoint( xlarge ) {
+      flex-basis: 15%;
+    }
+
+    @include breakpoint( xxlarge ) {
+      flex-basis: 12%;
+    }
+
+    &:hover {
+      border-color: $color-black;
+
+      .delete-button {
+        display: block;
+      }
+    }
+
+    &.active {
+      background-color: $color-active;
+    }
+  }
+
+  .glyph-container {
+    @include pseudo( after );
+    display: inline-block;
+    margin-left: $default-padding;
+    position: absolute;
+    right: $default-padding;
+    bottom: $default-padding;
+    mix-blend-mode: multiply;
+
+    &::after {
+      pointer-events: none;
+      background: $grid-overlay-small;
+    }
+  }
+
+  canvas {
+    transform: scale( 5 );
+    position: absolute;
+    transform-origin: top left;
+  }
+}
+
+#glyph-data {
+  font-family: 'Courier New', Courier, monospace !important;
+  padding: 1em;
+  margin: $default-padding 0;
+  width: 100%;
+}
+
+.button-area {
+  float: left;
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
+  width: 100%;
+  margin-top: $default-padding;
+  flex-direction: column;
+
+  @include breakpoint( medium ) {
+    align-items: flex-start;
+    width: 30%;
+    height: 164px;
+    padding-left: $default-padding;
+    margin-top: 0;
+  }
+
+  button {
+    display: block;
+    margin-bottom: $half-padding;
+    font-family: inherit;
+    font-weight: $font-weight-book;
+
+    @include breakpoint( medium ) {
+      margin-bottom: 0;
+    }
+
+    &:not( :disabled ) {
+      cursor: pointer;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.delete-button {
+  background-color: red;
+  border: none;
+  width: 20px;
+  height: 20px;
+  outline: none;
+  border-radius: 50%;
+  background-image: colored-inline-svg( $icon-x, $color-white );
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  cursor: default;
+  position: absolute;
+  right: $half-padding;
+  top: $half-padding;
+  display: none;
+  opacity: .35;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+//  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+//  Testing
+//  ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+#test-container {
+  @include pseudo( after );
+  width: 100%;
+  height: calc( 8px * 5 );
+  overflow: hidden;
+
+  &::after {
+    pointer-events: none;
+    background: $grid-overlay-small;
+  }
+}
+
+#test-canvas {
+  pointer-events: none;
+  width: 512px;
+  height: 8px;
+  position: absolute;
+  transform: scale( 5 );
+  transform-origin: left top;
+}
+
+#test-input {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: transparent;
+  font-size: calc( 10px * 5 );
+  letter-spacing: .075em;
+  font-family: inherit;
+  font-weight: $font-weight-book;
+}
